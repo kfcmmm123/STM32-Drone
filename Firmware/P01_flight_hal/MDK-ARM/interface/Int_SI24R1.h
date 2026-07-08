@@ -3,6 +3,8 @@
 
 #include "spi.h"
 #include "Com_debug.h"
+#include "FreeRTOS.h"
+#include "task.h"
 
 // Pull-down CS
 #define CS_LOW HAL_GPIO_WritePin(SPI1_NSS_GPIO_Port, SPI1_NSS_Pin, GPIO_PIN_RESET);

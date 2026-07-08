@@ -34,3 +34,12 @@
 .\p02_remote_hal\int_si24r1.o: C:\Users\13538\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\p02_remote_hal\int_si24r1.o: C:\Users\13538\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
 .\p02_remote_hal\int_si24r1.o: C:\Users\13538\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\p02_remote_hal\int_si24r1.o: ./freeRTOS/include/FreeRTOS.h
+.\p02_remote_hal\int_si24r1.o: ./freeRTOS/FreeRTOSConfig.h
+.\p02_remote_hal\int_si24r1.o: ./freeRTOS/include/projdefs.h
+.\p02_remote_hal\int_si24r1.o: ./freeRTOS/include/portable.h
+.\p02_remote_hal\int_si24r1.o: ./freeRTOS/include/deprecated_definitions.h
+.\p02_remote_hal\int_si24r1.o: ./freeRTOS/portable/portmacro.h
+.\p02_remote_hal\int_si24r1.o: ./freeRTOS/include/mpu_wrappers.h
+.\p02_remote_hal\int_si24r1.o: ./freeRTOS/include/task.h
+.\p02_remote_hal\int_si24r1.o: ./freeRTOS/include/list.h

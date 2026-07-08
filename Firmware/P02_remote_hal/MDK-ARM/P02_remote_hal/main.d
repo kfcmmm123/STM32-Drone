@@ -44,5 +44,6 @@
 .\p02_remote_hal\main.o: C:\Users\13538\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\p02_remote_hal\main.o: C:\Users\13538\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
 .\p02_remote_hal\main.o: C:\Users\13538\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
-.\p02_remote_hal\main.o: ./interface/Init_TP4336.h
+.\p02_remote_hal\main.o: ./interface/Int_TP4336.h
 .\p02_remote_hal\main.o: ./interface/Int_SI24R1.h
+.\p02_remote_hal\main.o: ./interface/Int_key.h

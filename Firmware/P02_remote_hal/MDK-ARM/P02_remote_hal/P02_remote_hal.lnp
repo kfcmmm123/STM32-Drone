@@ -31,8 +31,9 @@
 ".\p02_remote_hal\heap_4.o"
 ".\p02_remote_hal\port.o"
 ".\p02_remote_hal\app_freertos_task.o"
-".\p02_remote_hal\init_tp4336.o"
 ".\p02_remote_hal\int_si24r1.o"
+".\p02_remote_hal\int_key.o"
+".\p02_remote_hal\int_tp4336.o"
 --library_type=microlib --strict --scatter ".\P02_remote_hal\P02_remote_hal.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

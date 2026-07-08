@@ -42,4 +42,7 @@
 .\p02_remote_hal\app_freertos_task.o: C:\Users\13538\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\p02_remote_hal\app_freertos_task.o: C:\Users\13538\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
 .\p02_remote_hal\app_freertos_task.o: C:\Users\13538\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
-.\p02_remote_hal\app_freertos_task.o: ./interface/Init_TP4336.h
+.\p02_remote_hal\app_freertos_task.o: ./interface/Int_TP4336.h
+.\p02_remote_hal\app_freertos_task.o: ./interface/Int_SI24R1.h
+.\p02_remote_hal\app_freertos_task.o: ../Core/Inc/spi.h
+.\p02_remote_hal\app_freertos_task.o: ./interface/Int_key.h

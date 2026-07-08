@@ -4,8 +4,9 @@
 #include "FreeRTOS.h"
 #include "task.h"
 #include "Com_debug.h"
-#include "Init_TP4336.h"
+#include "Int_TP4336.h"
 #include "Int_SI24R1.h"
+#include "Int_key.h"
 
 /**
  * @brief  Initialize FreeRTOS tasks
