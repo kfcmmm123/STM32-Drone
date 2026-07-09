@@ -18,6 +18,11 @@ void key_task(void *args);
 TaskHandle_t key_task_handle;
 #define KEY_TASK_PERIOD 200
 
+void joystick_task(void *args);
+#define JOYSTICK_TASK_STACK_SIZE 128
+#define JOYSTICK_TASK_PRIORITY 2
+TaskHandle_t joystick_task_handle;
+#define JOYSTICK_TASK_PERIOD 20
 
 /**
  * @brief  Initialize FreeRTOS tasks
@@ -29,6 +34,8 @@ void App_freeRTOS_Task_Init(void)
     xTaskCreate(com_task, "com_task", COM_TASK_STACK_SIZE, NULL, COM_TASK_PRIORITY, &com_task_handle);
     
     xTaskCreate(key_task, "key_task", KEY_TASK_STACK_SIZE, NULL, KEY_TASK_PRIORITY, &key_task_handle);
+
+    xTaskCreate(joystick_task, "joystick_task", JOYSTICK_TASK_STACK_SIZE, NULL, JOYSTICK_TASK_PRIORITY, &joystick_task_handle);
 
     vTaskStartScheduler();
 }
@@ -49,11 +56,7 @@ void key_task(void *args)
     TickType_t last_wake_time = xTaskGetTickCount();
     while (1)
     {
-        Key_type key = Int_key_get();
-        if (key != KEY_NONE)
-        {
-            debug_printf("Key pressed: %d\n", key);
-        }
+        App_process_key_data();
 
         vTaskDelayUntil(&last_wake_time, KEY_TASK_PERIOD);
     }
@@ -76,5 +79,17 @@ void com_task(void *args)
         vTaskDelayUntil(&last_wake_time, COM_TASK_PERIOD);
 
         debug_printf("Hello remote\n");
+    }
+}
+
+void joystick_task(void *args)
+{
+    TickType_t last_wake_time = xTaskGetTickCount();
+    Int_joystick_init(); // Initialize the joystick interface
+    while (1)
+    {
+        App_process_joystick_data();
+
+        vTaskDelayUntil(&last_wake_time, JOYSTICK_TASK_PERIOD);
     }
 }
