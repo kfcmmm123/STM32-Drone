@@ -19,7 +19,7 @@
 // TX configuration
 #define CHANNEL 40
 #define TX_ADR_WIDTH 5    
-#define TX_PLOAD_WIDTH 32 
+#define TX_PLOAD_WIDTH 17
 
 //********************************************************************************************************************//
 // SPI(SI24R1) commands

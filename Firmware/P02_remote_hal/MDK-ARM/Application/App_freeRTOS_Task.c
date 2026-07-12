@@ -62,21 +62,12 @@ void key_task(void *args)
     }
 }
 
-
-uint8_t com_buff[TX_PLOAD_WIDTH] = {0};
-
 void com_task(void *args)
 {
     TickType_t last_wake_time = xTaskGetTickCount();
     while (1)
     {
-        Int_SI24R1_TX_Mode();
-
-        Int_SI24R1_TxPacket(com_buff);
-
-        Int_SI24R1_RX_Mode();
-        
-        vTaskDelayUntil(&last_wake_time, COM_TASK_PERIOD);
+        App_transmit_data();
 
         debug_printf("Hello remote\n");
     }

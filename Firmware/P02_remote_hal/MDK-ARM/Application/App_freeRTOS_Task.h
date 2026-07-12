@@ -7,6 +7,7 @@
 #include "Int_TP4336.h"
 #include "Int_SI24R1.h"
 #include "App_Process_Data.h"
+#include "App_transmit_data.h"
 
 /**
  * @brief  Initialize FreeRTOS tasks

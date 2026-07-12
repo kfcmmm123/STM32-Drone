@@ -53,3 +53,5 @@
 .\p02_remote_hal\main.o: ./Application/App_Process_Data.h
 .\p02_remote_hal\main.o: ./interface/Int_key.h
 .\p02_remote_hal\main.o: ./interface/Int_joystick.h
+.\p02_remote_hal\main.o: ./common/Com_tool.h
+.\p02_remote_hal\main.o: ./Application/App_transmit_data.h

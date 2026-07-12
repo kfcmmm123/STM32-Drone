@@ -36,3 +36,12 @@ p01_flight_hal\int_si24r1.o: ../Core/Inc/usart.h
 p01_flight_hal\int_si24r1.o: C:\Users\13538\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 p01_flight_hal\int_si24r1.o: C:\Users\13538\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
 p01_flight_hal\int_si24r1.o: C:\Users\13538\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+p01_flight_hal\int_si24r1.o: ./freeRTOS/include/FreeRTOS.h
+p01_flight_hal\int_si24r1.o: ./freeRTOS/FreeRTOSConfig.h
+p01_flight_hal\int_si24r1.o: ./freeRTOS/include/projdefs.h
+p01_flight_hal\int_si24r1.o: ./freeRTOS/include/portable.h
+p01_flight_hal\int_si24r1.o: ./freeRTOS/include/deprecated_definitions.h
+p01_flight_hal\int_si24r1.o: ./freeRTOS/portable/portmacro.h
+p01_flight_hal\int_si24r1.o: ./freeRTOS/include/mpu_wrappers.h
+p01_flight_hal\int_si24r1.o: ./freeRTOS/include/task.h
+p01_flight_hal\int_si24r1.o: ./freeRTOS/include/list.h

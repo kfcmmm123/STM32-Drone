@@ -1,5 +1,5 @@
-.\p02_remote_hal\app_process_data.o: Application\App_Process_Data.c
-.\p02_remote_hal\app_process_data.o: Application\App_Process_Data.h
+.\p02_remote_hal\app_process_data.o: Application\App_process_data.c
+.\p02_remote_hal\app_process_data.o: Application\App_process_data.h
 .\p02_remote_hal\app_process_data.o: ./interface/Int_key.h
 .\p02_remote_hal\app_process_data.o: ../Core/Inc/main.h
 .\p02_remote_hal\app_process_data.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h
@@ -42,3 +42,4 @@
 .\p02_remote_hal\app_process_data.o: ./freeRTOS/include/list.h
 .\p02_remote_hal\app_process_data.o: ./interface/Int_joystick.h
 .\p02_remote_hal\app_process_data.o: ../Core/Inc/adc.h
+.\p02_remote_hal\app_process_data.o: ./common/Com_tool.h

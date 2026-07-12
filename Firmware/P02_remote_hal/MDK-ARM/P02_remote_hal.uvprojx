@@ -948,6 +948,16 @@
               <FileType>1</FileType>
               <FilePath>.\common\Com_debug.c</FilePath>
             </File>
+            <File>
+              <FileName>Com_tool.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\common\Com_tool.c</FilePath>
+            </File>
+            <File>
+              <FileName>Com_tool.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\common\Com_tool.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1114,24 +1124,34 @@
           <GroupName>application</GroupName>
           <Files>
             <File>
-              <FileName>App_freeRTOS_Task.c</FileName>
+              <FileName>App_freeRTOS_task.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Application\App_freeRTOS_Task.c</FilePath>
+              <FilePath>.\Application\App_freeRTOS_task.c</FilePath>
             </File>
             <File>
-              <FileName>App_freeRTOS_Task.h</FileName>
+              <FileName>App_freeRTOS_task.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\Application\App_freeRTOS_Task.h</FilePath>
+              <FilePath>.\Application\App_freeRTOS_task.h</FilePath>
             </File>
             <File>
-              <FileName>App_Process_Data.c</FileName>
+              <FileName>App_process_data.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Application\App_Process_Data.c</FilePath>
+              <FilePath>.\Application\App_process_data.c</FilePath>
             </File>
             <File>
-              <FileName>App_Process_Data.h</FileName>
+              <FileName>App_process_data.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\Application\App_Process_Data.h</FilePath>
+              <FilePath>.\Application\App_process_data.h</FilePath>
+            </File>
+            <File>
+              <FileName>App_transmit_data.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Application\App_transmit_data.c</FilePath>
+            </File>
+            <File>
+              <FileName>App_transmit_data.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Application\App_transmit_data.h</FilePath>
             </File>
           </Files>
         </Group>
