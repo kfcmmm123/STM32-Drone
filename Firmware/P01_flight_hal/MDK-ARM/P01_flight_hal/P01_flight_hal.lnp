@@ -34,6 +34,7 @@
 "p01_flight_hal\heap_4.o"
 "p01_flight_hal\port.o"
 "p01_flight_hal\app_freertos_task.o"
+"p01_flight_hal\app_receive_data.o"
 "p01_flight_hal\int_led.o"
 "p01_flight_hal\int_motor.o"
 "p01_flight_hal\int_tp4336.o"

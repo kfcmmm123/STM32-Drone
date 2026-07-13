@@ -22,18 +22,20 @@ Dialog DLL:      TCM.DLL V1.56.6.0
  
 <h2>Project:</h2>
 c:\Users\13538\Desktop\STM32 Drone\Firmware\P01_flight_hal\MDK-ARM\P01_flight_hal.uvprojx
-Project File Date:  07/05/2026
+Project File Date:  07/12/2026
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'C:\Users\13538\AppData\Local\Keil_v5\ARM\ARMCC\Bin'
 Build target 'P01_flight_hal'
-compiling Int_SI24R1.c...
-compiling App_freeRTOS_Task.c...
-compiling main.c...
+compiling App_freeRTOS_task.c...
+compiling App_receive_data.c...
+Application\App_receive_data.c(20): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "const char *"
+      if (strlen(rx_buff) == 0)
+Application\App_receive_data.c: 1 warning, 0 errors
 linking...
-Program Size: Code=13584 RO-data=312 RW-data=200 ZI-data=13984  
+Program Size: Code=13768 RO-data=312 RW-data=204 ZI-data=13988  
 FromELF: creating hex file...
-"P01_flight_hal\P01_flight_hal.axf" - 0 Error(s), 0 Warning(s).
+"P01_flight_hal\P01_flight_hal.axf" - 0 Error(s), 1 Warning(s).
 
 <h2>Software Packages used:</h2>
 

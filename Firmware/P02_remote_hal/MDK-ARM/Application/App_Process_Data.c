@@ -2,7 +2,7 @@
 
 Joystick_Struct joystick = { 0 };
 
-Remote_data remote_data = { 0 };
+Remote_Data remote_data = { 0 };
 
 int16_t key_pit_offset = 0;
 int16_t key_rol_offset = 0;
@@ -116,5 +116,10 @@ void App_process_joystick_data(void)
     joystick.pit = Com_limit(joystick.pit, 0, 1000);
 
     taskEXIT_CRITICAL();
+
+    remote_data.thr = joystick.thr; 
+    remote_data.yaw = joystick.yaw;
+    remote_data.pit = joystick.pit;
+    remote_data.rol = joystick.rol;
 
 }

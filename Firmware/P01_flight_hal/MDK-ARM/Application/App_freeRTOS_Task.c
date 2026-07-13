@@ -1,4 +1,4 @@
-#include "App_freeRTOS_Task.h"
+#include "App_freeRTOS_task.h"
 
 // Power management task
 void power_task(void *args);
@@ -35,6 +35,8 @@ LED_Struct left_bottom_led = { .port = LED4_GPIO_Port, .pin = LED4_Pin };
 Remote_State remote_state = REMOTE_DISCONNECTED;
 Flight_State flight_state = IDLE;
 
+Remote_data remote_data = { 0 };
+
 // Communication task
 void com_task(void *args);
 #define COM_TASK_STACK_SIZE 128
@@ -63,9 +65,21 @@ void power_task(void *args)
     TickType_t last_wake_time = xTaskGetTickCount();
     while (1)
     {
-        vTaskDelayUntil(&last_wake_time, POWER_TASK_PERIOD);
+        // Runs every 10 sec => prevent shutdown 
+        
+        // Wait until being notified to start => 0: timeout, 1: notified 
+        uint32_t res = ulTaskNotifyTake(pdTRUE, POWER_TASK_PERIOD);
 
-        Init_TP4336();
+        if (res != 0)
+        {
+            // Timeout => shutdown
+            Int_TP4336_shutdown();
+        }
+        else 
+        {
+            // Notified => start power 
+            Int_TP4336_start();
+        }
     }
 }
 
@@ -140,17 +154,20 @@ void led_task(void *args)
     }
 }
 
-uint8_t com_data[TX_PLOAD_WIDTH] = {0}; // Communication data buffer
-
 void com_task(void *args)
 {
     TickType_t last_wake_time = xTaskGetTickCount();
     while (1)
     {
-        uint8_t res = Int_SI24R1_RxPacket(com_data);
-        if (res == 0)
+        uint8_t res = App_receive_data();
+        
+        // Connection state
+        App_process_connect_state(res);
+
+        // Process shutdown 
+        if (remote_data.shutdown == 1)
         {
-            debug_printf("Received data: %s\n", com_data);
+            xTaskNotifyGive(power_task_handle);
         }
 
         vTaskDelayUntil(&last_wake_time, COM_TASK_PERIOD);

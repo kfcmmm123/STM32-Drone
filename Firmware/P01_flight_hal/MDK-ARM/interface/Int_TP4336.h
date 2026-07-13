@@ -3,6 +3,14 @@
 
 #include "main.h"
 
-void Init_TP4336(void);
+/**
+ * @brief Start TP4336 
+ */
+void Int_TP4336_start(void);
+
+/**
+ * @brief Shutdown TP4336
+ */
+void Int_TP4336_shutdown(void);
 
 #endif

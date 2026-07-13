@@ -52,3 +52,4 @@ p01_flight_hal\main.o: ./interface/Int_motor.h
 p01_flight_hal\main.o: ./interface/Int_led.h
 p01_flight_hal\main.o: ./interface/Int_SI24R1.h
 p01_flight_hal\main.o: ./common/Com_config.h
+p01_flight_hal\main.o: ./Application/App_receive_data.h

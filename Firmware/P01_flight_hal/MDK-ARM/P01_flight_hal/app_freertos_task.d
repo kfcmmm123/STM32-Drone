@@ -1,5 +1,5 @@
-p01_flight_hal\app_freertos_task.o: Application\App_freeRTOS_Task.c
-p01_flight_hal\app_freertos_task.o: Application\App_freeRTOS_Task.h
+p01_flight_hal\app_freertos_task.o: Application\App_freeRTOS_task.c
+p01_flight_hal\app_freertos_task.o: Application\App_freeRTOS_task.h
 p01_flight_hal\app_freertos_task.o: ./freeRTOS/include/FreeRTOS.h
 p01_flight_hal\app_freertos_task.o: C:\Users\13538\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 p01_flight_hal\app_freertos_task.o: C:\Users\13538\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
@@ -51,3 +51,4 @@ p01_flight_hal\app_freertos_task.o: ./interface/Int_led.h
 p01_flight_hal\app_freertos_task.o: ./interface/Int_SI24R1.h
 p01_flight_hal\app_freertos_task.o: ../Core/Inc/spi.h
 p01_flight_hal\app_freertos_task.o: ./common/Com_config.h
+p01_flight_hal\app_freertos_task.o: Application\App_receive_data.h
