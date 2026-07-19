@@ -60,7 +60,7 @@ void Int_MPU6050_Calculate_Offset(void)
 
     for (uint8_t i = 0; i < 100; i++)
     {
-        Int_MPU6050_Get_Acc(&gyro_accel_data);
+        Int_MPU6050_Get_Data(&gyro_accel_data);
         acc_x_sum += (gyro_accel_data.accel.accel_x - 0);
         acc_y_sum += (gyro_accel_data.accel.accel_y - 0);
         acc_z_sum += (gyro_accel_data.accel.accel_z - 16384);

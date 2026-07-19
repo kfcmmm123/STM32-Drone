@@ -27,6 +27,7 @@ p01_flight_hal\app_receive_data.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx
 p01_flight_hal\app_receive_data.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_cortex.h
 p01_flight_hal\app_receive_data.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.h
 p01_flight_hal\app_receive_data.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h
+p01_flight_hal\app_receive_data.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_i2c.h
 p01_flight_hal\app_receive_data.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h
 p01_flight_hal\app_receive_data.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h
 p01_flight_hal\app_receive_data.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h
