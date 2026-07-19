@@ -2,6 +2,12 @@
 
 extern Remote_data remote_data;
 extern Remote_State remote_state; 
+extern Flight_State flight_state;
+
+Thr_State thr_state = FREE;
+
+uint32_t max_enter_time = 0;
+uint32_t min_enter_time = 0;
 
 uint8_t rx_buff[TX_PLOAD_WIDTH] = { 0 };
 
@@ -71,5 +77,118 @@ void App_process_connect_state(uint8_t res)
             remote_state = REMOTE_DISCONNECTED;
             retry_count = 0;
         }
+    }
+}
+
+/**
+ * @brief Process unlock logic 
+ * 
+ * @return uint8_t 0: unlock successful, 1: unlock failed 
+ */
+static uint8_t App_process_unlock(void)
+{
+    switch(thr_state)
+    {
+        case FREE:
+            if (remote_data.thr >= 900)
+            {
+                thr_state = MAX;
+                max_enter_time = xTaskGetTickCount();
+            }
+            break;
+        case MAX:
+            if (remote_data.thr < 900)
+            {
+                if (xTaskGetTickCount() - max_enter_time >= 1000)
+                {
+                    thr_state = LEAVE_MAX; 
+                }
+                else 
+                {
+                    thr_state = FREE;
+                }
+            }
+            break;
+        case LEAVE_MAX:
+            if (remote_data.thr <= 100)
+            {
+                thr_state = MIN;
+                min_enter_time = xTaskGetTickCount();
+            }
+            break;
+        case MIN:
+            if (xTaskGetTickCount() - min_enter_time <= 1000)
+            {
+                if (remote_data.thr > 100)
+                {
+                    thr_state = FREE;
+                }
+            }
+            else 
+            {
+                thr_state = UNLOCK;
+            }
+        case UNLOCK:
+            break;
+        default:
+            break;
+    }
+
+    if (thr_state == UNLOCK)
+    {
+        return 0;
+    }
+    return 1;
+}
+
+/**
+ * @brief Process flight state 
+ */
+void App_process_flight_state(void)
+{
+    switch(flight_state)
+    {
+        case IDLE:
+            if (App_process_unlock() == 0)
+            {
+                flight_state = NORMAL; 
+                thr_state = FREE;
+            }
+            break;
+        case NORMAL:
+            // Fix height state  
+            if (remote_data.fix_height == 1)
+            {
+                flight_state = FIX_HEIGHT;
+                remote_data.fix_height = 0;
+            }
+
+            // Remote disconnecteed state
+            if (remote_state == REMOTE_DISCONNECTED)
+            {
+                flight_state = FAIL;
+            }
+            break;
+        case FIX_HEIGHT:
+            // Normal state 
+            if (remote_data.fix_height == 1)
+            {
+                flight_state = NORMAL;
+                remote_data.fix_height = 0;
+            }
+
+            // Remote disconnecteed state
+            if (remote_state == REMOTE_DISCONNECTED)
+            {
+                flight_state = FAIL;
+            }
+            
+            break;
+        case FAIL:
+            vTaskDelay(1);
+            flight_state = IDLE;
+            break;
+        default: 
+            break;
     }
 }

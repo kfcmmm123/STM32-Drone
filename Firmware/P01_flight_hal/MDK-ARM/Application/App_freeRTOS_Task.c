@@ -86,10 +86,13 @@ void power_task(void *args)
 void flight_task(void *args)
 {
     TickType_t last_wake_time = xTaskGetTickCount();
+    Int_MPU6050_Init();
     while (1)
     {
-        left_top_motor.speed = 400;
-        Init_motor_start(&left_top_motor);
+        // left_top_motor.speed = 400;
+        // Init_motor_start(&left_top_motor);
+
+        App_flight_get_euler_angle();
         vTaskDelayUntil(&last_wake_time, FLIGHT_TASK_PERIOD);
     }
 }
@@ -169,6 +172,8 @@ void com_task(void *args)
         {
             xTaskNotifyGive(power_task_handle);
         }
+
+        App_process_flight_state();
 
         vTaskDelayUntil(&last_wake_time, COM_TASK_PERIOD);
     }
