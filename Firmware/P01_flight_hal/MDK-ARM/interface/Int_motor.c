@@ -23,5 +23,6 @@ void Init_motor_set_speed(Motor_Struct *motor)
  */
 void Init_motor_start(Motor_Struct *motor)
 {
+    __HAL_TIM_SET_COMPARE(motor->tim, motor->channel, 0);
     HAL_TIM_PWM_Start(motor->tim, motor->channel);
 }

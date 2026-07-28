@@ -6,6 +6,31 @@ Gyro_Struct last_gyro = { 0 };
 
 float gyro_z_sum = 0; 
 
+PID_Struct pitch_pid = { .kp = 0.00, .ki = 0.00, .kd = 0.00};
+PID_Struct gyro_y_pid = { .kp = 0.00, .ki = 0.00, .kd = 0.00};
+
+extern Remote_data remote_data; 
+extern Flight_State flight_state;
+
+Motor_Struct left_top_motor = { .tim = &htim3, .channel = TIM_CHANNEL_1, .speed = 0 };
+Motor_Struct left_bottom_motor = { .tim = &htim4, .channel = TIM_CHANNEL_4, .speed = 0 };
+Motor_Struct right_top_motor = { .tim = &htim2, .channel = TIM_CHANNEL_2, .speed = 0 };
+Motor_Struct right_bottom_motor = { .tim = &htim1, .channel = TIM_CHANNEL_3, .speed = 0 };
+
+
+/**
+ * @brief Initialize MPU6050 and start motors
+ */
+void App_flight_init(void)
+{
+    Int_MPU6050_Init();
+
+    Init_motor_start(&left_top_motor);
+    Init_motor_start(&left_bottom_motor);
+    Init_motor_start(&right_top_motor);
+    Init_motor_start(&right_bottom_motor);
+}
+
 /**
  * @brief Calculate Euler angle based on gyro data
  */
@@ -33,4 +58,51 @@ void App_flight_get_euler_angle(void)
 
     gyro_z_sum += (gyro_accel_data.gyro.gyro_z * 2000.0 / 32768.0) * 0.006;
     euler_angle.yaw = gyro_z_sum; 
+}
+
+/**
+ * @brief Calculate PID values based on Euler angles
+ */
+void App_flight_pid_process(void)
+{
+    pitch_pid.desire = (remote_data.pit - 500) / 50.0;
+    pitch_pid.measure = euler_angle.pitch; 
+    
+    gyro_y_pid.measure = gyro_accel_data.gyro.gyro_y * 2000.0 / 32768.0;
+
+    Com_PID_Calc_Chain(&pitch_pid, &gyro_y_pid); 
+}
+
+/**
+ * @brief Control motors based on PID values 
+ */
+void App_flight_control_motor(void)
+{
+    switch (flight_state)
+    {
+    case IDLE:
+        left_top_motor.speed = 0;
+        left_bottom_motor.speed = 0;
+        right_top_motor.speed = 0;
+        right_bottom_motor.speed = 0;
+        break;
+    case NORMAL:
+        left_top_motor.speed = remote_data.thr + gyro_y_pid.output;
+        left_bottom_motor.speed = remote_data.thr - gyro_y_pid.output;
+        right_top_motor.speed = remote_data.thr + gyro_y_pid.output;
+        right_bottom_motor.speed = remote_data.thr - gyro_y_pid.output;
+        break;
+    default:
+        break;
+    }
+
+    left_top_motor.speed = Com_Limit(left_top_motor.speed, 600, 0);
+    left_bottom_motor.speed = Com_Limit(left_bottom_motor.speed, 600, 0);
+    right_top_motor.speed = Com_Limit(right_top_motor.speed, 600, 0);
+    right_bottom_motor.speed = Com_Limit(right_bottom_motor.speed, 600, 0);
+
+    Init_motor_set_speed(&left_top_motor);
+    Init_motor_set_speed(&left_bottom_motor);
+    Init_motor_set_speed(&right_top_motor);
+    Init_motor_set_speed(&right_bottom_motor);
 }

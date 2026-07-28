@@ -14,12 +14,6 @@ void flight_task(void *args);
 TaskHandle_t flight_task_handle;
 #define FLIGHT_TASK_PERIOD 6
 
-Motor_Struct left_top_motor = { .tim = &htim3, .channel = TIM_CHANNEL_1, .speed = 200 };
-Motor_Struct left_bottom_motor = { .tim = &htim4, .channel = TIM_CHANNEL_4, .speed = 200 };
-Motor_Struct right_top_motor = { .tim = &htim2, .channel = TIM_CHANNEL_2, .speed = 200 };
-Motor_Struct right_bottom_motor = { .tim = &htim1, .channel = TIM_CHANNEL_3, .speed = 200 };
-
-
 // LED control task
 void led_task(void *args);
 #define LED_TASK_STACK_SIZE 128
@@ -35,7 +29,7 @@ LED_Struct left_bottom_led = { .port = LED4_GPIO_Port, .pin = LED4_Pin };
 Remote_State remote_state = REMOTE_DISCONNECTED;
 Flight_State flight_state = IDLE;
 
-Remote_data remote_data = { 0 };
+Remote_data remote_data = { .thr = 0, .yaw = 500, .pit = 500, .rol = 500, .fix_height = 0, .shutdown = 0 };
 
 // Communication task
 void com_task(void *args);
@@ -86,13 +80,18 @@ void power_task(void *args)
 void flight_task(void *args)
 {
     TickType_t last_wake_time = xTaskGetTickCount();
-    Int_MPU6050_Init();
+    App_flight_init(); 
     while (1)
     {
         // left_top_motor.speed = 400;
         // Init_motor_start(&left_top_motor);
 
         App_flight_get_euler_angle();
+
+        App_flight_pid_process();
+
+        App_flight_control_motor();
+
         vTaskDelayUntil(&last_wake_time, FLIGHT_TASK_PERIOD);
     }
 }
