@@ -1,7 +1,9 @@
 p01_flight_hal\app_flight.o: Application\App_flight.c
 p01_flight_hal\app_flight.o: Application\App_flight.h
-p01_flight_hal\app_flight.o: ./interface/Int_mpu6050.h
-p01_flight_hal\app_flight.o: ../Core/Inc/i2c.h
+p01_flight_hal\app_flight.o: C:\Users\13538\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+p01_flight_hal\app_flight.o: ./common/Com_filter.h
+p01_flight_hal\app_flight.o: ./common/Com_debug.h
+p01_flight_hal\app_flight.o: ../Core/Inc/usart.h
 p01_flight_hal\app_flight.o: ../Core/Inc/main.h
 p01_flight_hal\app_flight.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h
 p01_flight_hal\app_flight.o: ../Core/Inc/stm32f1xx_hal_conf.h
@@ -33,6 +35,14 @@ p01_flight_hal\app_flight.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_s
 p01_flight_hal\app_flight.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h
 p01_flight_hal\app_flight.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h
 p01_flight_hal\app_flight.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h
+p01_flight_hal\app_flight.o: C:\Users\13538\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+p01_flight_hal\app_flight.o: C:\Users\13538\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+p01_flight_hal\app_flight.o: C:\Users\13538\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+p01_flight_hal\app_flight.o: ./common/Com_pid.h
+p01_flight_hal\app_flight.o: ./interface/Int_motor.h
+p01_flight_hal\app_flight.o: ../Core/Inc/tim.h
+p01_flight_hal\app_flight.o: ./interface/Int_mpu6050.h
+p01_flight_hal\app_flight.o: ../Core/Inc/i2c.h
 p01_flight_hal\app_flight.o: ./common/Com_config.h
 p01_flight_hal\app_flight.o: ./freeRTOS/include/FreeRTOS.h
 p01_flight_hal\app_flight.o: ./freeRTOS/FreeRTOSConfig.h
@@ -44,10 +54,3 @@ p01_flight_hal\app_flight.o: ./freeRTOS/include/mpu_wrappers.h
 p01_flight_hal\app_flight.o: ./freeRTOS/include/task.h
 p01_flight_hal\app_flight.o: ./freeRTOS/include/list.h
 p01_flight_hal\app_flight.o: C:\Users\13538\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-p01_flight_hal\app_flight.o: ./common/Com_filter.h
-p01_flight_hal\app_flight.o: ./common/Com_debug.h
-p01_flight_hal\app_flight.o: ../Core/Inc/usart.h
-p01_flight_hal\app_flight.o: C:\Users\13538\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
-p01_flight_hal\app_flight.o: C:\Users\13538\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
-p01_flight_hal\app_flight.o: C:\Users\13538\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
-p01_flight_hal\app_flight.o: C:\Users\13538\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\math.h

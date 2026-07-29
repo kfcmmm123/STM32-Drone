@@ -28,6 +28,7 @@
 "p01_flight_hal\com_debug.o"
 "p01_flight_hal\com_filter.o"
 "p01_flight_hal\com_imu.o"
+"p01_flight_hal\com_pid.o"
 "p01_flight_hal\croutine.o"
 "p01_flight_hal\event_groups.o"
 "p01_flight_hal\list.o"

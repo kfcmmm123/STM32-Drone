@@ -56,7 +56,8 @@ p01_flight_hal\main.o: ./interface/Int_SI24R1.h
 p01_flight_hal\main.o: ./common/Com_config.h
 p01_flight_hal\main.o: ./Application/App_receive_data.h
 p01_flight_hal\main.o: ./Application/App_flight.h
+p01_flight_hal\main.o: C:\Users\13538\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+p01_flight_hal\main.o: ./common/Com_filter.h
+p01_flight_hal\main.o: ./common/Com_pid.h
 p01_flight_hal\main.o: ./interface/Int_mpu6050.h
 p01_flight_hal\main.o: C:\Users\13538\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-p01_flight_hal\main.o: ./common/Com_filter.h
-p01_flight_hal\main.o: C:\Users\13538\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\math.h

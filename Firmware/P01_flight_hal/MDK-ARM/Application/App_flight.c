@@ -6,8 +6,17 @@ Gyro_Struct last_gyro = { 0 };
 
 float gyro_z_sum = 0; 
 
-PID_Struct pitch_pid = { .kp = 0.00, .ki = 0.00, .kd = 0.00};
-PID_Struct gyro_y_pid = { .kp = 0.00, .ki = 0.00, .kd = 0.00};
+// Pitch angle 
+PID_Struct pitch_pid = { .kp = -7.00, .ki = 0.00, .kd = 0.00};
+PID_Struct gyro_y_pid = { .kp = 3.00, .ki = 0.00, .kd = 0.50};
+
+// Row angle
+PID_Struct row_pid = { .kp = -7.00, .ki = 0.00, .kd = 0.00};
+PID_Struct gyro_x_pid = { .kp = 3.00, .ki = 0.00, .kd = 0.50};
+
+// Yaw angle
+PID_Struct yaw_pid = { .kp = -3.00, .ki = 0.00, .kd = 0.00};
+PID_Struct gyro_z_pid = { .kp = -5.00, .ki = 0.00, .kd = 0.00};
 
 extern Remote_data remote_data; 
 extern Flight_State flight_state;
@@ -65,12 +74,29 @@ void App_flight_get_euler_angle(void)
  */
 void App_flight_pid_process(void)
 {
+    // Pitch angle 
     pitch_pid.desire = (remote_data.pit - 500) / 50.0;
     pitch_pid.measure = euler_angle.pitch; 
     
     gyro_y_pid.measure = gyro_accel_data.gyro.gyro_y * 2000.0 / 32768.0;
 
     Com_PID_Calc_Chain(&pitch_pid, &gyro_y_pid); 
+
+    // Row angle
+    row_pid.desire = (remote_data.rol - 500) / 50.0;
+    row_pid.measure = euler_angle.roll; 
+
+    gyro_x_pid.measure = gyro_accel_data.gyro.gyro_x * 2000.0 / 32768.0;
+
+    Com_PID_Calc_Chain(&row_pid, &gyro_x_pid);
+
+    // Yaw angle
+    yaw_pid.desire = (remote_data.yaw - 500) / 50.0;
+    yaw_pid.measure = euler_angle.yaw; 
+
+    gyro_z_pid.measure = gyro_accel_data.gyro.gyro_z * 2000.0 / 32768.0;
+
+    Com_PID_Calc_Chain(&yaw_pid, &gyro_z_pid);
 }
 
 /**
@@ -87,10 +113,10 @@ void App_flight_control_motor(void)
         right_bottom_motor.speed = 0;
         break;
     case NORMAL:
-        left_top_motor.speed = remote_data.thr + gyro_y_pid.output;
-        left_bottom_motor.speed = remote_data.thr - gyro_y_pid.output;
-        right_top_motor.speed = remote_data.thr + gyro_y_pid.output;
-        right_bottom_motor.speed = remote_data.thr - gyro_y_pid.output;
+        left_top_motor.speed = remote_data.thr + gyro_y_pid.output - gyro_x_pid.output + gyro_z_pid.output;
+        left_bottom_motor.speed = remote_data.thr - gyro_y_pid.output - gyro_x_pid.output - gyro_z_pid.output;
+        right_top_motor.speed = remote_data.thr + gyro_y_pid.output + gyro_x_pid.output - gyro_z_pid.output;
+        right_bottom_motor.speed = remote_data.thr - gyro_y_pid.output + gyro_x_pid.output + gyro_z_pid.output;
         break;
     default:
         break;
@@ -100,6 +126,14 @@ void App_flight_control_motor(void)
     left_bottom_motor.speed = Com_Limit(left_bottom_motor.speed, 600, 0);
     right_top_motor.speed = Com_Limit(right_top_motor.speed, 600, 0);
     right_bottom_motor.speed = Com_Limit(right_bottom_motor.speed, 600, 0);
+
+    if (remote_data.thr < 50)
+    {
+        left_top_motor.speed = 0;
+        left_bottom_motor.speed = 0;
+        right_top_motor.speed = 0;
+        right_bottom_motor.speed = 0;
+    }
 
     Init_motor_set_speed(&left_top_motor);
     Init_motor_set_speed(&left_bottom_motor);
