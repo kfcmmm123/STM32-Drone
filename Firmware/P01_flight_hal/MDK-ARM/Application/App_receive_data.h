@@ -1,8 +1,9 @@
 #ifndef __APP_RECEIVE_DATA_H__
 #define __APP_RECEIVE_DATA_H__
 
-#include "Int_SI24R1.h"
 #include "Com_config.h"
+#include "Int_SI24R1.h"
+#include "Int_VL53L1X.h"
 
 #define FRAME_HEAD_CHECK_1 's'
 #define FRAME_HEAD_CHECK_2 'g'

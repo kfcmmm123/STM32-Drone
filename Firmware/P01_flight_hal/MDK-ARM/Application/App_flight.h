@@ -6,6 +6,7 @@
 #include "Com_pid.h"
 #include "Int_motor.h"
 #include "Int_mpu6050.h"
+#include "Int_VL53L1X.h"
 
 /**
  * @brief Initialize MPU6050 and start motors
@@ -26,5 +27,10 @@ void App_flight_pid_process(void);
  * @brief Control motors based on PID values 
  */
 void App_flight_control_motor(void);
+
+/**
+ * @brief Calculate PID values for fix height mode
+ */
+void App_flight_fix_height_pid_process(void);
 
 #endif // __APP_FLIGHT_H__

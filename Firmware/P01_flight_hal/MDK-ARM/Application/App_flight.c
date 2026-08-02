@@ -21,6 +21,10 @@ PID_Struct gyro_z_pid = { .kp = -5.00, .ki = 0.00, .kd = 0.00};
 extern Remote_data remote_data; 
 extern Flight_State flight_state;
 
+extern uint16_t fix_height;
+
+PID_Struct height_pid = { .kp = -0.60, .ki = 0.00, .kd = -0.20};
+
 Motor_Struct left_top_motor = { .tim = &htim3, .channel = TIM_CHANNEL_1, .speed = 0 };
 Motor_Struct left_bottom_motor = { .tim = &htim4, .channel = TIM_CHANNEL_4, .speed = 0 };
 Motor_Struct right_top_motor = { .tim = &htim2, .channel = TIM_CHANNEL_2, .speed = 0 };
@@ -38,6 +42,8 @@ void App_flight_init(void)
     Init_motor_start(&left_bottom_motor);
     Init_motor_start(&right_top_motor);
     Init_motor_start(&right_bottom_motor);
+
+    Int_VL53L1X_Init(); 
 }
 
 /**
@@ -112,12 +118,24 @@ void App_flight_control_motor(void)
         right_top_motor.speed = 0;
         right_bottom_motor.speed = 0;
         break;
+
     case NORMAL:
         left_top_motor.speed = remote_data.thr + gyro_y_pid.output - gyro_x_pid.output + gyro_z_pid.output;
         left_bottom_motor.speed = remote_data.thr - gyro_y_pid.output - gyro_x_pid.output - gyro_z_pid.output;
         right_top_motor.speed = remote_data.thr + gyro_y_pid.output + gyro_x_pid.output - gyro_z_pid.output;
         right_bottom_motor.speed = remote_data.thr - gyro_y_pid.output + gyro_x_pid.output + gyro_z_pid.output;
         break;
+
+    case FIX_HEIGHT:
+        left_top_motor.speed = remote_data.thr + gyro_y_pid.output - gyro_x_pid.output + gyro_z_pid.output + height_pid.output;
+        left_bottom_motor.speed = remote_data.thr - gyro_y_pid.output - gyro_x_pid.output - gyro_z_pid.output + height_pid.output;
+        right_top_motor.speed = remote_data.thr + gyro_y_pid.output + gyro_x_pid.output - gyro_z_pid.output + height_pid.output;
+        right_bottom_motor.speed = remote_data.thr - gyro_y_pid.output + gyro_x_pid.output + gyro_z_pid.output + height_pid.output;
+        break;
+
+    case FAIL: 
+        break; 
+
     default:
         break;
     }
@@ -139,4 +157,15 @@ void App_flight_control_motor(void)
     Init_motor_set_speed(&left_bottom_motor);
     Init_motor_set_speed(&right_top_motor);
     Init_motor_set_speed(&right_bottom_motor);
+}
+
+/**
+ * @brief Calculate PID values for fix height mode
+ */
+void App_flight_fix_height_pid_process(void)
+{
+    height_pid.desire = fix_height; 
+    height_pid.measure = Int_VL53L1X_Get_Distance();
+
+    Com_PID_Calc(&height_pid);
 }

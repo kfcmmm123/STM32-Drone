@@ -14,6 +14,7 @@
                 "c:\\Users\\13538\\Desktop\\STM32 Drone\\Firmware\\P01_flight_hal\\MDK-ARM\\freeRTOS\\portable",
                 "c:\\Users\\13538\\Desktop\\STM32 Drone\\Firmware\\P01_flight_hal\\MDK-ARM\\Application",
                 "c:\\Users\\13538\\Desktop\\STM32 Drone\\Firmware\\P01_flight_hal\\MDK-ARM\\interface",
+                "c:\\Users\\13538\\Desktop\\STM32 Drone\\Firmware\\P01_flight_hal\\MDK-ARM\\interface\\fix_height",
                 "C:\\Users\\13538\\AppData\\Local\\Keil_v5\\ARM\\ARMCC\\include",
                 "C:\\Users\\13538\\AppData\\Local\\Keil_v5\\ARM\\ARMCC\\include\\arm_linux",
                 "C:\\Users\\13538\\AppData\\Local\\Keil_v5\\ARM\\ARMCC\\include\\arm_linux_compat",

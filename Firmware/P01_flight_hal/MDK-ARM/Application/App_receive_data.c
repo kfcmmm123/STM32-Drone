@@ -13,6 +13,8 @@ uint8_t rx_buff[TX_PLOAD_WIDTH] = { 0 };
 
 uint8_t retry_count = 0;
 
+extern uint16_t fix_height;
+
 /**
  * @brief Receive data from remote controller
  * 
@@ -161,6 +163,8 @@ void App_process_flight_state(void)
             {
                 flight_state = FIX_HEIGHT;
                 remote_data.fix_height = 0;
+
+                fix_height = Int_VL53L1X_Get_Distance();
             }
 
             // Remote disconnecteed state

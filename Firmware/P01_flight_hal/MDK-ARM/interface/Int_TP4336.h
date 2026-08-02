@@ -1,6 +1,8 @@
 #ifndef __INIT_TP4336_H__
 #define __INIT_TP4336_H__
 
+#include "FreeRTOS.h"
+#include "task.h"
 #include "main.h"
 
 /**

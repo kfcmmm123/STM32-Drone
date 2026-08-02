@@ -54,3 +54,8 @@ p01_flight_hal\app_flight.o: ./freeRTOS/include/mpu_wrappers.h
 p01_flight_hal\app_flight.o: ./freeRTOS/include/task.h
 p01_flight_hal\app_flight.o: ./freeRTOS/include/list.h
 p01_flight_hal\app_flight.o: C:\Users\13538\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+p01_flight_hal\app_flight.o: ./interface/fix_height/Int_VL53L1X.h
+p01_flight_hal\app_flight.o: ./interface/fix_height/vl53l1_platform.h
+p01_flight_hal\app_flight.o: ./interface/fix_height/vl53l1_types.h
+p01_flight_hal\app_flight.o: ./interface/fix_height/VL53L1X_api.h
+p01_flight_hal\app_flight.o: ./interface/fix_height/VL53L1X_calibration.h

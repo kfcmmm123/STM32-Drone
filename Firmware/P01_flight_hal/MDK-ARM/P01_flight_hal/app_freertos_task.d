@@ -53,10 +53,15 @@ p01_flight_hal\app_freertos_task.o: ./interface/Int_SI24R1.h
 p01_flight_hal\app_freertos_task.o: ../Core/Inc/spi.h
 p01_flight_hal\app_freertos_task.o: ./common/Com_config.h
 p01_flight_hal\app_freertos_task.o: Application\App_receive_data.h
+p01_flight_hal\app_freertos_task.o: ./interface/fix_height/Int_VL53L1X.h
+p01_flight_hal\app_freertos_task.o: ./interface/fix_height/vl53l1_platform.h
+p01_flight_hal\app_freertos_task.o: ./interface/fix_height/vl53l1_types.h
+p01_flight_hal\app_freertos_task.o: C:\Users\13538\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+p01_flight_hal\app_freertos_task.o: ../Core/Inc/i2c.h
+p01_flight_hal\app_freertos_task.o: ./interface/fix_height/VL53L1X_api.h
+p01_flight_hal\app_freertos_task.o: ./interface/fix_height/VL53L1X_calibration.h
 p01_flight_hal\app_freertos_task.o: Application\App_flight.h
 p01_flight_hal\app_freertos_task.o: C:\Users\13538\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 p01_flight_hal\app_freertos_task.o: ./common/Com_filter.h
 p01_flight_hal\app_freertos_task.o: ./common/Com_pid.h
 p01_flight_hal\app_freertos_task.o: ./interface/Int_mpu6050.h
-p01_flight_hal\app_freertos_task.o: ../Core/Inc/i2c.h
-p01_flight_hal\app_freertos_task.o: C:\Users\13538\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h

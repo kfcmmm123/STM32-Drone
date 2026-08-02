@@ -29,6 +29,8 @@ LED_Struct left_bottom_led = { .port = LED4_GPIO_Port, .pin = LED4_Pin };
 Remote_State remote_state = REMOTE_DISCONNECTED;
 Flight_State flight_state = IDLE;
 
+uint16_t fix_height = 0; 
+
 Remote_data remote_data = { .thr = 0, .yaw = 500, .pit = 500, .rol = 500, .fix_height = 0, .shutdown = 0 };
 
 // Communication task
@@ -80,6 +82,7 @@ void power_task(void *args)
 void flight_task(void *args)
 {
     TickType_t last_wake_time = xTaskGetTickCount();
+    uint8_t count = 0;
     App_flight_init(); 
     while (1)
     {
@@ -90,7 +93,21 @@ void flight_task(void *args)
 
         App_flight_pid_process();
 
+        if (flight_state == FIX_HEIGHT)
+        {
+            count++;
+            if (count >= 4)
+            {
+                App_flight_fix_height_pid_process();
+                count = 0;
+            }
+            
+        }
+
         App_flight_control_motor();
+
+        uint16_t distance = Int_VL53L1X_Get_Distance();
+        printf("Distance: %d mm\n", distance);
 
         vTaskDelayUntil(&last_wake_time, FLIGHT_TASK_PERIOD);
     }
