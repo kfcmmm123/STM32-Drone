@@ -20,6 +20,7 @@ PID_Struct gyro_z_pid = { .kp = -5.00, .ki = 0.00, .kd = 0.00};
 
 extern Remote_data remote_data; 
 extern Flight_State flight_state;
+extern TaskHandle_t com_task_handle;
 
 extern uint16_t fix_height;
 
@@ -134,6 +135,18 @@ void App_flight_control_motor(void)
         break;
 
     case FAIL: 
+        left_top_motor.speed -= 2;
+        left_bottom_motor.speed -= 2;
+        right_top_motor.speed -= 2;
+        right_bottom_motor.speed -= 2;
+
+        if (left_top_motor.speed <= 0 &&
+            left_bottom_motor.speed <= 0 &&
+            right_top_motor.speed <= 0 &&
+            right_bottom_motor.speed <= 0)
+        {
+            xTaskNotifyGive(com_task_handle);
+        }
         break; 
 
     default:

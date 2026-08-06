@@ -189,7 +189,8 @@ void App_process_flight_state(void)
             
             break;
         case FAIL:
-            vTaskDelay(1);
+            ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+            
             flight_state = IDLE;
             break;
         default: 

@@ -24,6 +24,12 @@ void joystick_task(void *args);
 TaskHandle_t joystick_task_handle;
 #define JOYSTICK_TASK_PERIOD 20
 
+void oled_task(void *args);
+#define OLED_TASK_STACK_SIZE 128
+#define OLED_TASK_PRIORITY 1
+TaskHandle_t oled_task_handle;
+#define OLED_TASK_PERIOD 100
+
 /**
  * @brief  Initialize FreeRTOS tasks
  */
@@ -36,6 +42,8 @@ void App_freeRTOS_Task_Init(void)
     xTaskCreate(key_task, "key_task", KEY_TASK_STACK_SIZE, NULL, KEY_TASK_PRIORITY, &key_task_handle);
 
     xTaskCreate(joystick_task, "joystick_task", JOYSTICK_TASK_STACK_SIZE, NULL, JOYSTICK_TASK_PRIORITY, &joystick_task_handle);
+
+    xTaskCreate(oled_task, "oled_task", OLED_TASK_STACK_SIZE, NULL, OLED_TASK_PRIORITY, &oled_task_handle);
 
     vTaskStartScheduler();
 }
@@ -82,5 +90,17 @@ void joystick_task(void *args)
         App_process_joystick_data();
 
         vTaskDelayUntil(&last_wake_time, JOYSTICK_TASK_PERIOD);
+    }
+}
+
+void oled_task(void *args)
+{
+    TickType_t last_wake_time = xTaskGetTickCount();
+    App_display_init();
+
+    while (1)
+    {
+        App_display_show();
+        vTaskDelayUntil(&last_wake_time, OLED_TASK_PERIOD);
     }
 }

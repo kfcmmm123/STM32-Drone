@@ -55,3 +55,5 @@
 .\p02_remote_hal\main.o: ./interface/Int_joystick.h
 .\p02_remote_hal\main.o: ./common/Com_tool.h
 .\p02_remote_hal\main.o: ./Application/App_transmit_data.h
+.\p02_remote_hal\main.o: ./Application/App_display.h
+.\p02_remote_hal\main.o: .\interface\oled\Inf_OLED.h

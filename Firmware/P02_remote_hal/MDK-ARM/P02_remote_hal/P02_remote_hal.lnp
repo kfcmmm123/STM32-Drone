@@ -38,10 +38,13 @@
 ".\p02_remote_hal\app_freertos_task.o"
 ".\p02_remote_hal\app_process_data.o"
 ".\p02_remote_hal\app_transmit_data.o"
+".\p02_remote_hal\app_display.o"
 ".\p02_remote_hal\int_si24r1.o"
 ".\p02_remote_hal\int_key.o"
 ".\p02_remote_hal\int_tp4336.o"
 ".\p02_remote_hal\int_joystick.o"
+".\p02_remote_hal\inf_font.o"
+".\p02_remote_hal\inf_oled.o"
 --library_type=microlib --strict --scatter ".\P02_remote_hal\P02_remote_hal.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
