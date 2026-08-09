@@ -4,14 +4,13 @@ extern Remote_Data remote_data;
 
 uint8_t tx_buff[TX_PLOAD_WIDTH] = {0};
 
+uint8_t post_buff[TX_PLOAD_WIDTH] = {0}; 
+
 /**
  * @brief Transmit data to flight controller 
  */
 void App_transmit_data(void)
 {
-    // Start transmit mode
-    Int_SI24R1_TX_Mode();
-
     uint32_t sum = 0;
 
     // Packet is 17 bytes => header check 3 bytes + data 10 bytes + CRC 4 bytes 
@@ -51,9 +50,20 @@ void App_transmit_data(void)
     tx_buff[15] = (sum >> 8) & 0xFF;
     tx_buff[16] = sum & 0xFF;
 
+    // Start transmit mode
+    Int_SI24R1_TX_Mode();
+
     // Transmit data
-    Int_SI24R1_TxPacket(tx_buff);
+    uint8_t res = Int_SI24R1_TxPacket(tx_buff);
 
     // Switch back to receive mode
     Int_SI24R1_RX_Mode();
+
+    if (res == 0)
+    {
+        while (Int_SI24R1_RxPacket(post_buff) == 1)
+        {
+            // Wait for acknowledgment
+        }
+    }
 }

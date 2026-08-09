@@ -2,7 +2,7 @@
 
 void power_task(void *args);
 #define POWER_TASK_STACK_SIZE 128
-#define POWER_TASK_PRIORITY 1
+#define POWER_TASK_PRIORITY 4
 TaskHandle_t power_task_handle;
 #define POWER_TASK_PERIOD 10000
 
@@ -10,7 +10,7 @@ void com_task(void *args);
 #define COM_TASK_STACK_SIZE 128
 #define COM_TASK_PRIORITY 3
 TaskHandle_t com_task_handle;
-#define COM_TASK_PERIOD 6
+#define COM_TASK_PERIOD 10
 
 void key_task(void *args);
 #define KEY_TASK_STACK_SIZE 128
@@ -78,6 +78,7 @@ void com_task(void *args)
         App_transmit_data();
 
         debug_printf("Hello remote\n");
+        vTaskDelay(COM_TASK_PERIOD);
     }
 }
 

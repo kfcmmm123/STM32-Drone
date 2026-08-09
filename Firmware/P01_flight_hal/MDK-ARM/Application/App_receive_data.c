@@ -14,6 +14,7 @@ uint8_t rx_buff[TX_PLOAD_WIDTH] = { 0 };
 uint8_t retry_count = 0;
 
 extern uint16_t fix_height;
+extern uint8_t back_buff[TX_PLOAD_WIDTH]; // Battery voltage
 
 /**
  * @brief Receive data from remote controller
@@ -23,7 +24,19 @@ extern uint16_t fix_height;
 uint8_t App_receive_data(void)
 {
     memset(rx_buff, 0, TX_PLOAD_WIDTH);
-    Int_SI24R1_RxPacket(rx_buff);
+    uint8_t res = Int_SI24R1_RxPacket(rx_buff);
+    if (res == 0)
+    {
+        Int_SI24R1_TX_Mode();
+
+        uint16_t count = 500; 
+        while (Int_SI24R1_RxPacket(rx_buff) == 1 && count > 0)
+        {
+            count--;
+        }
+        Int_SI24R1_RX_Mode();
+    }
+
     if (strlen(rx_buff) == 0)
     {
         return 1; 

@@ -1,8 +1,4 @@
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'C:\Users\13538\AppData\Local\Keil_v5\ARM\ARMCC\Bin'
 Build target 'P01_flight_hal'
-compiling App_flight.c...
-linking...
-Program Size: Code=27432 RO-data=592 RW-data=600 ZI-data=14160  
-FromELF: creating hex file...
 "P01_flight_hal\P01_flight_hal.axf" - 0 Error(s), 0 Warning(s).
-Build Time Elapsed:  00:00:02
+Build Time Elapsed:  00:00:00

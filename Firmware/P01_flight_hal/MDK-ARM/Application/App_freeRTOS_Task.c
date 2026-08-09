@@ -3,14 +3,14 @@
 // Power management task
 void power_task(void *args);
 #define POWER_TASK_STACK_SIZE 128
-#define POWER_TASK_PRIORITY 1
+#define POWER_TASK_PRIORITY 4
 TaskHandle_t power_task_handle;
 #define POWER_TASK_PERIOD 10000 // 10 seconds
 
 // Flight control task
 void flight_task(void *args);
 #define FLIGHT_TASK_STACK_SIZE 128
-#define FLIGHT_TASK_PRIORITY 2
+#define FLIGHT_TASK_PRIORITY 3
 TaskHandle_t flight_task_handle;
 #define FLIGHT_TASK_PERIOD 6
 
@@ -20,6 +20,13 @@ void led_task(void *args);
 #define LED_TASK_PRIORITY 1
 TaskHandle_t led_task_handle;
 #define LED_TASK_PERIOD 100
+
+// Communication task
+void com_task(void *args);
+#define COM_TASK_STACK_SIZE 128
+#define COM_TASK_PRIORITY 4
+TaskHandle_t com_task_handle;
+#define COM_TASK_PERIOD 10
 
 LED_Struct left_top_led = { .port = LED1_GPIO_Port, .pin = LED1_Pin };
 LED_Struct right_top_led = { .port = LED2_GPIO_Port, .pin = LED2_Pin };
@@ -31,14 +38,9 @@ Flight_State flight_state = IDLE;
 
 uint16_t fix_height = 0; 
 
-Remote_data remote_data = { .thr = 0, .yaw = 500, .pit = 500, .rol = 500, .fix_height = 0, .shutdown = 0 };
+uint8_t back_buff[TX_PLOAD_WIDTH] = { 0 };
 
-// Communication task
-void com_task(void *args);
-#define COM_TASK_STACK_SIZE 128
-#define COM_TASK_PRIORITY 2
-TaskHandle_t com_task_handle;
-#define COM_TASK_PERIOD 6
+Remote_data remote_data = { .thr = 0, .yaw = 500, .pit = 500, .rol = 500, .fix_height = 0, .shutdown = 0 };
 
 /**
  * @brief  Initialize FreeRTOS tasks
@@ -176,6 +178,7 @@ void led_task(void *args)
 void com_task(void *args)
 {
     TickType_t last_wake_time = xTaskGetTickCount();
+    Int_bat_ADC_Init(); // Initialize battery ADC
     while (1)
     {
         uint8_t res = App_receive_data();
@@ -191,6 +194,9 @@ void com_task(void *args)
 
         App_process_flight_state();
 
-        vTaskDelayUntil(&last_wake_time, COM_TASK_PERIOD);
+        float voltage = Int_bat_ADC_Read(); // Read battery voltage
+        sprintf(back_buff, "%,2f", voltage);
+
+        vTaskDelay(COM_TASK_PERIOD);
     }
 }

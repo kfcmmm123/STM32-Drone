@@ -22,6 +22,8 @@ p01_flight_hal\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_exti.h
 p01_flight_hal\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h
 p01_flight_hal\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma_ex.h
 p01_flight_hal\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_cortex.h
+p01_flight_hal\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_adc.h
+p01_flight_hal\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_adc_ex.h
 p01_flight_hal\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.h
 p01_flight_hal\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h
 p01_flight_hal\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_i2c.h
@@ -30,6 +32,7 @@ p01_flight_hal\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h
 p01_flight_hal\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h
 p01_flight_hal\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h
 p01_flight_hal\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h
+p01_flight_hal\main.o: ../Core/Inc/adc.h
 p01_flight_hal\main.o: ../Core/Inc/i2c.h
 p01_flight_hal\main.o: ../Core/Inc/spi.h
 p01_flight_hal\main.o: ../Core/Inc/tim.h
@@ -53,6 +56,7 @@ p01_flight_hal\main.o: ./interface/Int_TP4336.h
 p01_flight_hal\main.o: ./interface/Int_motor.h
 p01_flight_hal\main.o: ./interface/Int_led.h
 p01_flight_hal\main.o: ./interface/Int_SI24R1.h
+p01_flight_hal\main.o: ./interface/Int_bat_ADC.h
 p01_flight_hal\main.o: ./common/Com_config.h
 p01_flight_hal\main.o: ./Application/App_receive_data.h
 p01_flight_hal\main.o: ./interface/fix_height/Int_VL53L1X.h

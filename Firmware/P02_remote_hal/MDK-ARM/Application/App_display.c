@@ -1,7 +1,14 @@
 #include "App_display.h"
 
 extern Remote_Data remote_data;
+extern uint8_t post_buff[TX_PLOAD_WIDTH];
 
+/**
+ * @brief  Show bar on the display
+ * @param  x: X coordinate of the bar
+ * @param  y: Y coordinate of the bar
+ * @param  count: Number of bars to show (0-12)
+ */
 void App_display_show_bar(uint8_t x, uint8_t y, uint8_t count)
 {
     if (count < 13)
@@ -26,10 +33,13 @@ void App_display_show(void)
     // 1st line: Show title
     OLED_ShowString(LINE1_BEGIN, Y0, "STM32 Drone Alan", 12, 1);
 
-    // 2nd line: Show channel number
+    // 2nd line: Show channel number and battery voltage 
     uint8_t buff[3] = { 0 };
     sprintf((char*)buff, "%03d", CHANNEL);
     OLED_ShowString(LINE2_BEGIN, Y1, buff, 12, 1);
+
+    OLED_ShowString(LINE2_BEGIN + 64, Y1, "V:  ", 12, 1);
+    OLED_ShowString(LINE2_BEGIN + 64 + 24, Y1, post_buff, 12, 1);
 
     // 3rd line: Show throttle value and bars
     OLED_ShowString(LINE3_BEGIN, Y2, "THR:", 12, 1);

@@ -32,6 +32,8 @@ p01_flight_hal\int_tp4336.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_e
 p01_flight_hal\int_tp4336.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h
 p01_flight_hal\int_tp4336.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma_ex.h
 p01_flight_hal\int_tp4336.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_cortex.h
+p01_flight_hal\int_tp4336.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_adc.h
+p01_flight_hal\int_tp4336.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_adc_ex.h
 p01_flight_hal\int_tp4336.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.h
 p01_flight_hal\int_tp4336.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h
 p01_flight_hal\int_tp4336.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_i2c.h
