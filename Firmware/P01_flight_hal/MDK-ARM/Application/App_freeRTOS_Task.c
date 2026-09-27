@@ -108,8 +108,8 @@ void flight_task(void *args)
 
         App_flight_control_motor();
 
-        uint16_t distance = Int_VL53L1X_Get_Distance();
-        printf("Distance: %d mm\n", distance);
+        // uint16_t distance = Int_VL53L1X_Get_Distance();
+        // printf("Distance: %d mm\n", distance);
 
         vTaskDelayUntil(&last_wake_time, FLIGHT_TASK_PERIOD);
     }
@@ -179,6 +179,7 @@ void com_task(void *args)
 {
     TickType_t last_wake_time = xTaskGetTickCount();
     Int_bat_ADC_Init(); // Initialize battery ADC
+    Int_SI24R1_Init(); // Initialize SI24R1
     while (1)
     {
         uint8_t res = App_receive_data();
@@ -195,7 +196,7 @@ void com_task(void *args)
         App_process_flight_state();
 
         float voltage = Int_bat_ADC_Read(); // Read battery voltage
-        sprintf(back_buff, "%,2f", voltage);
+        sprintf(back_buff, "%.2f", voltage);
 
         vTaskDelay(COM_TASK_PERIOD);
     }

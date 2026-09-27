@@ -38,7 +38,7 @@ p01_flight_hal\main.o: ../Core/Inc/spi.h
 p01_flight_hal\main.o: ../Core/Inc/tim.h
 p01_flight_hal\main.o: ../Core/Inc/usart.h
 p01_flight_hal\main.o: ../Core/Inc/gpio.h
-p01_flight_hal\main.o: ./Application/App_freeRTOS_Task.h
+p01_flight_hal\main.o: ./Application/App_freeRTOS_task.h
 p01_flight_hal\main.o: ./freeRTOS/include/FreeRTOS.h
 p01_flight_hal\main.o: ./freeRTOS/FreeRTOSConfig.h
 p01_flight_hal\main.o: ./freeRTOS/include/projdefs.h
@@ -69,4 +69,5 @@ p01_flight_hal\main.o: ./Application/App_flight.h
 p01_flight_hal\main.o: C:\Users\13538\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 p01_flight_hal\main.o: ./common/Com_filter.h
 p01_flight_hal\main.o: ./common/Com_pid.h
+p01_flight_hal\main.o: ./common/Com_imu.h
 p01_flight_hal\main.o: ./interface/Int_mpu6050.h

@@ -41,11 +41,12 @@ p01_flight_hal\app_flight.o: C:\Users\13538\AppData\Local\Keil_v5\ARM\ARMCC\Bin\
 p01_flight_hal\app_flight.o: C:\Users\13538\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
 p01_flight_hal\app_flight.o: C:\Users\13538\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 p01_flight_hal\app_flight.o: ./common/Com_pid.h
+p01_flight_hal\app_flight.o: ./common/Com_imu.h
+p01_flight_hal\app_flight.o: ./common/Com_config.h
 p01_flight_hal\app_flight.o: ./interface/Int_motor.h
 p01_flight_hal\app_flight.o: ../Core/Inc/tim.h
 p01_flight_hal\app_flight.o: ./interface/Int_mpu6050.h
 p01_flight_hal\app_flight.o: ../Core/Inc/i2c.h
-p01_flight_hal\app_flight.o: ./common/Com_config.h
 p01_flight_hal\app_flight.o: ./freeRTOS/include/FreeRTOS.h
 p01_flight_hal\app_flight.o: ./freeRTOS/FreeRTOSConfig.h
 p01_flight_hal\app_flight.o: ./freeRTOS/include/projdefs.h

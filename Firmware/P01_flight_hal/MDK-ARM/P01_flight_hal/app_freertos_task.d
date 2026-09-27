@@ -68,4 +68,5 @@ p01_flight_hal\app_freertos_task.o: Application\App_flight.h
 p01_flight_hal\app_freertos_task.o: C:\Users\13538\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 p01_flight_hal\app_freertos_task.o: ./common/Com_filter.h
 p01_flight_hal\app_freertos_task.o: ./common/Com_pid.h
+p01_flight_hal\app_freertos_task.o: ./common/Com_imu.h
 p01_flight_hal\app_freertos_task.o: ./interface/Int_mpu6050.h

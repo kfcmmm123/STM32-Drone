@@ -1,5 +1,5 @@
 .\p02_remote_hal\app_freertos_task.o: Application\App_freeRTOS_task.c
-.\p02_remote_hal\app_freertos_task.o: Application\App_freeRTOS_Task.h
+.\p02_remote_hal\app_freertos_task.o: Application\App_freeRTOS_task.h
 .\p02_remote_hal\app_freertos_task.o: ./freeRTOS/include/FreeRTOS.h
 .\p02_remote_hal\app_freertos_task.o: C:\Users\13538\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 .\p02_remote_hal\app_freertos_task.o: C:\Users\13538\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
@@ -47,7 +47,7 @@
 .\p02_remote_hal\app_freertos_task.o: ./interface/Int_TP4336.h
 .\p02_remote_hal\app_freertos_task.o: ./interface/Int_SI24R1.h
 .\p02_remote_hal\app_freertos_task.o: ../Core/Inc/spi.h
-.\p02_remote_hal\app_freertos_task.o: Application\App_Process_Data.h
+.\p02_remote_hal\app_freertos_task.o: Application\App_process_data.h
 .\p02_remote_hal\app_freertos_task.o: ./interface/Int_key.h
 .\p02_remote_hal\app_freertos_task.o: ./interface/Int_joystick.h
 .\p02_remote_hal\app_freertos_task.o: ../Core/Inc/adc.h

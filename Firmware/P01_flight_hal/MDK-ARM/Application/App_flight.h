@@ -4,6 +4,7 @@
 #include "math.h"
 #include "Com_filter.h"
 #include "Com_pid.h"
+#include "Com_imu.h"
 #include "Int_motor.h"
 #include "Int_mpu6050.h"
 #include "Int_VL53L1X.h"

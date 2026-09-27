@@ -34,7 +34,7 @@
 .\p02_remote_hal\main.o: ../Core/Inc/spi.h
 .\p02_remote_hal\main.o: ../Core/Inc/usart.h
 .\p02_remote_hal\main.o: ../Core/Inc/gpio.h
-.\p02_remote_hal\main.o: ./Application/App_freeRTOS_Task.h
+.\p02_remote_hal\main.o: ./Application/App_freeRTOS_task.h
 .\p02_remote_hal\main.o: ./freeRTOS/include/FreeRTOS.h
 .\p02_remote_hal\main.o: ./freeRTOS/FreeRTOSConfig.h
 .\p02_remote_hal\main.o: ./freeRTOS/include/projdefs.h
@@ -50,7 +50,7 @@
 .\p02_remote_hal\main.o: C:\Users\13538\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\p02_remote_hal\main.o: ./interface/Int_TP4336.h
 .\p02_remote_hal\main.o: ./interface/Int_SI24R1.h
-.\p02_remote_hal\main.o: ./Application/App_Process_Data.h
+.\p02_remote_hal\main.o: ./Application/App_process_data.h
 .\p02_remote_hal\main.o: ./interface/Int_key.h
 .\p02_remote_hal\main.o: ./interface/Int_joystick.h
 .\p02_remote_hal\main.o: ./common/Com_tool.h

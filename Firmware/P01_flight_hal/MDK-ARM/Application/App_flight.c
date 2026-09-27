@@ -69,11 +69,13 @@ void App_flight_get_euler_angle(void)
     gyro_accel_data.accel.accel_z = Common_Filter_KalmanFilter(&kfs[2], gyro_accel_data.accel.accel_z);
 
     // Attitude Estimation => Complementary Filter (Angular velocity integration + Acceleration estimation)
-    euler_angle.pitch = atan2(gyro_accel_data.accel.accel_x * 1.0, gyro_accel_data.accel.accel_z) / 3.14159 * 180;
-    euler_angle.roll = atan2(gyro_accel_data.accel.accel_y * 1.0, gyro_accel_data.accel.accel_z) / 3.14159 * 180;
+    // euler_angle.pitch = atan2(gyro_accel_data.accel.accel_x * 1.0, gyro_accel_data.accel.accel_z) / 3.14159 * 180;
+    // euler_angle.roll = atan2(gyro_accel_data.accel.accel_y * 1.0, gyro_accel_data.accel.accel_z) / 3.14159 * 180;
 
-    gyro_z_sum += (gyro_accel_data.gyro.gyro_z * 2000.0 / 32768.0) * 0.006;
-    euler_angle.yaw = gyro_z_sum; 
+    // gyro_z_sum += (gyro_accel_data.gyro.gyro_z * 2000.0 / 32768.0) * 0.006;
+    // euler_angle.yaw = gyro_z_sum; 
+
+    Common_IMU_GetEulerAngle(&gyro_accel_data, &euler_angle, 0.006);
 }
 
 /**

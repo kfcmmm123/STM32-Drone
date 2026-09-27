@@ -24,6 +24,14 @@ void Int_MPU6050_Read_Reg(uint8_t reg, uint8_t *data)
  */
 void Int_MPU6050_Calculate_Offset(void)
 {
+    acc_x_offset = 0;
+    acc_y_offset = 0;
+    acc_z_offset = 0;
+
+    gyro_x_offset = 0;
+    gyro_y_offset = 0;
+    gyro_z_offset = 0;
+
     // Wait till the flight is steady => readings changes within range of 200 for 100 times
     Accel_Struct current_accel = { 0 };
     Accel_Struct last_accel = { 0 };
@@ -87,7 +95,7 @@ void Int_MPU6050_Calculate_Offset(void)
 void Int_MPU6050_Init(void)
 {
     // Reset device => DEVICE_RESET = 1
-    Int_MPU6050_Write_Reg(MPU6050_ADDR, 0x80);
+    Int_MPU6050_Write_Reg(MPU_PWR_MGMT1_REG, 0x80);
 
     // Wait till reset is completed => read power management register = 0x40 (Sleep)
     uint8_t data = { 0 };
@@ -111,7 +119,7 @@ void Int_MPU6050_Init(void)
     // User control config 
     Int_MPU6050_Write_Reg(MPU_USER_CTRL_REG, 0x00);
 
-    // Sample rate config => 1000 Hz
+    // Sensor sample rate: 1000 / (1 + 1) = 500 Hz
     // Divider = 2  
     Int_MPU6050_Write_Reg(MPU_SAMPLE_RATE_REG, 0x01);
 
@@ -142,17 +150,17 @@ void Int_MPU6050_Get_Gyro(Gyro_Struct *gyro)
     // X axis 
     Int_MPU6050_Read_Reg(MPU_GYRO_XOUTH_REG, &high);
     Int_MPU6050_Read_Reg(MPU_GYRO_XOUTL_REG, &low);
-    gyro->gyro_x = (high << 8 | low) / 32768.2f * 2000;
+    gyro->gyro_x = (int16_t)(((uint16_t)high << 8) | low);
 
     // Y axis
     Int_MPU6050_Read_Reg(MPU_GYRO_YOUTH_REG, &high);
     Int_MPU6050_Read_Reg(MPU_GYRO_YOUTL_REG, &low);
-    gyro->gyro_y = (high << 8 | low) / 32768.2f * 2000;
+    gyro->gyro_y = (int16_t)(((uint16_t)high << 8) | low);
 
     // Z axis
     Int_MPU6050_Read_Reg(MPU_GYRO_ZOUTH_REG, &high);
     Int_MPU6050_Read_Reg(MPU_GYRO_ZOUTL_REG, &low);
-    gyro->gyro_z = (high << 8 | low) / 32768.2f * 2000;
+    gyro->gyro_z = (int16_t)(((uint16_t)high << 8) | low);
 
     gyro->gyro_x -= gyro_x_offset;
     gyro->gyro_y -= gyro_y_offset;
@@ -172,17 +180,17 @@ void Int_MPU6050_Get_Acc(Accel_Struct *acc)
     // X axis 
     Int_MPU6050_Read_Reg(MPU_ACCEL_XOUTH_REG, &high);
     Int_MPU6050_Read_Reg(MPU_ACCEL_XOUTL_REG, &low);
-    acc->accel_x = (high << 8 | low) / 32768.2f * 2;
+    acc->accel_x = (int16_t)(((uint16_t)high << 8) | low);
 
     // Y axis
     Int_MPU6050_Read_Reg(MPU_ACCEL_YOUTH_REG, &high);
     Int_MPU6050_Read_Reg(MPU_ACCEL_YOUTL_REG, &low);
-    acc->accel_y = (high << 8 | low) / 32768.2f * 2;
+    acc->accel_y = (int16_t)(((uint16_t)high << 8) | low);
 
     // Z axis
     Int_MPU6050_Read_Reg(MPU_ACCEL_ZOUTH_REG, &high);
     Int_MPU6050_Read_Reg(MPU_ACCEL_ZOUTL_REG, &low);
-    acc->accel_z = (high << 8 | low) / 32768.2f * 2;
+    acc->accel_z = (int16_t)(((uint16_t)high << 8) | low);
 
     acc->accel_x -= acc_x_offset;
     acc->accel_y -= acc_y_offset;

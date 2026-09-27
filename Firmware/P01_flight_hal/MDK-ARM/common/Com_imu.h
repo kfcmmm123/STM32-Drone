@@ -1,7 +1,7 @@
 #ifndef __COMMON_IMU_H
 #define __COMMON_IMU_H
 #include "Com_debug.h"
-#include "Com_Config.h"
+#include "Com_config.h"
 #include "math.h"
 
 typedef struct

@@ -1,4 +1,4 @@
-#include "Com_IMU.h"
+#include "Com_imu.h"
 
 /* Calculation config */
 float RtA = 57.2957795f; // radians to degrees conversion factor

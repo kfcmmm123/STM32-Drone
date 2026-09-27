@@ -1,5 +1,5 @@
 p01_flight_hal\com_imu.o: common\Com_imu.c
-p01_flight_hal\com_imu.o: common\Com_IMU.h
+p01_flight_hal\com_imu.o: common\Com_imu.h
 p01_flight_hal\com_imu.o: common\Com_debug.h
 p01_flight_hal\com_imu.o: ../Core/Inc/usart.h
 p01_flight_hal\com_imu.o: ../Core/Inc/main.h
@@ -38,5 +38,5 @@ p01_flight_hal\com_imu.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart
 p01_flight_hal\com_imu.o: C:\Users\13538\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 p01_flight_hal\com_imu.o: C:\Users\13538\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
 p01_flight_hal\com_imu.o: C:\Users\13538\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
-p01_flight_hal\com_imu.o: common\Com_Config.h
+p01_flight_hal\com_imu.o: common\Com_config.h
 p01_flight_hal\com_imu.o: C:\Users\13538\AppData\Local\Keil_v5\ARM\ARMCC\Bin\..\include\math.h

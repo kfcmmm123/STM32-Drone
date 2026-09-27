@@ -1,4 +1,4 @@
-#include "App_freeRTOS_Task.h"
+#include "App_freeRTOS_task.h"
 
 void power_task(void *args);
 #define POWER_TASK_STACK_SIZE 128

@@ -34,7 +34,7 @@ void App_transmit_data(void)
     tx_buff[10] = remote_data.rol & 0xFF; 
 
     taskENTER_CRITICAL();
-    tx_buff[11] = (remote_data.shutdown >> 8); 
+    tx_buff[11] = remote_data.shutdown;
     remote_data.shutdown = 0;
     tx_buff[12] = remote_data.fix_height; 
     remote_data.fix_height = 0;

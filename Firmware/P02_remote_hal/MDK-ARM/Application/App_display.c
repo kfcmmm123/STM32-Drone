@@ -76,14 +76,14 @@ void App_display_show(void)
     if (remote_data.yaw > 500) 
     {
         count = (remote_data.yaw - 500) / 41;
-        App_display_show_bar(BAR1_BEGIN2, Y3, 12);
-        App_display_show_bar(BAR2_BEGIN2, Y3, count);
+        App_display_show_bar(BAR1_BEGIN, Y3, 12);
+        App_display_show_bar(BAR2_BEGIN, Y3, count);
     }
     else 
     {
         count = remote_data.yaw / 41;
-        App_display_show_bar(BAR1_BEGIN2, Y3, count);
-        App_display_show_bar(BAR2_BEGIN2, Y3, 0);
+        App_display_show_bar(BAR1_BEGIN, Y3, count);
+        App_display_show_bar(BAR2_BEGIN, Y3, 0);
     }
 
     OLED_ShowString(LINE4_BEGIN2, Y3, "PIT:", 12, 1);

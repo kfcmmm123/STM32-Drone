@@ -7,10 +7,10 @@ Remote_Data remote_data = { 0 };
 int16_t key_pit_offset = 0;
 int16_t key_rol_offset = 0;
 
-int8_t thr_offset = 0;
-int8_t yaw_offset = 0;
-int8_t rol_offset = 0;
-int8_t pit_offset = 0;
+int16_t thr_offset = 0;
+int16_t yaw_offset = 0;
+int16_t rol_offset = 0;
+int16_t pit_offset = 0;
 
 /**
  * 
@@ -20,10 +20,10 @@ void App_calibrate_joystick(void)
     key_pit_offset = 0;
     key_rol_offset = 0;
 
-    int8_t thr_sum = 0;
-    int8_t yaw_sum = 0;
-    int8_t rol_sum = 0;
-    int8_t pit_sum = 0;
+    int16_t thr_sum = 0;
+    int16_t yaw_sum = 0;
+    int16_t rol_sum = 0;
+    int16_t pit_sum = 0;
 
     for (uint8_t i = 0; i < 10; i++)
     {

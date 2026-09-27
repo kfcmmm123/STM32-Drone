@@ -26,7 +26,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "App_freeRTOS_Task.h"
+#include "App_freeRTOS_task.h"
 #include "Int_SI24R1.h"
 /* USER CODE END Includes */
 

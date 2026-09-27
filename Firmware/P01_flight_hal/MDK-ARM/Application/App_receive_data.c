@@ -30,7 +30,7 @@ uint8_t App_receive_data(void)
         Int_SI24R1_TX_Mode();
 
         uint16_t count = 500; 
-        while (Int_SI24R1_RxPacket(rx_buff) == 1 && count > 0)
+        while (Int_SI24R1_TxPacket(back_buff) == 1 && count > 0)
         {
             count--;
         }
