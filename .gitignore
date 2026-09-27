@@ -1,0 +1,7 @@
+# Keil build-output directories
+/Firmware/P01_flight_hal/MDK-ARM/P01_flight_hal/
+/Firmware/P02_remote_hal/MDK-ARM/P02_remote_hal/
+
+# Generated listings and per-user Keil layout
+*.lst
+*.uvguix.*
